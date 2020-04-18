@@ -90,22 +90,7 @@ python3 cnn.py
 ```python
 if __name__ == '__main__':
 
-    # create dataloader
-    train_data = TorchDataset(trainData=True)
-    train_loader = Data.DataLoader(dataset=train_data, batch_size=bch_size, shuffle=True)
-
-    test_data = TorchDataset(trainData=False)
-    test_loader = Data.DataLoader(dataset=test_data, batch_size=bch_size, shuffle=False)
-
-    print('train data: '+str(len(train_data)))
-    print('test data: '+str(len(test_data)))
-
-    # define loss function
-    #weights = [1./3129, 1./667, 1./126]
-    weights = [1, 1, 1]
-    class_weights = torch.FloatTensor(weights)
-    criterion = nn.CrossEntropyLoss(weight=class_weights)
-
+    ......
 
     if istrain:
         # create model & optimizer
@@ -119,19 +104,5 @@ if __name__ == '__main__':
         #optimizer = torch.optim.SGD(cnn.parameters(),lr=lr,momentum=0.8)        
         #optimizer = torch.optim.RMSprop(cnn.parameters(),lr=lr,alpha=0.9)
 
-        device = torch.device("cuda")
-        cnn = cnn.to(device)
-        criterion = criterion.to(device)
-
-        train(cnn, optimizer, criterion, train_loader, test_loader)
-    else:
-        # load model
-        cnn = CNN()
-        cnn.load_state_dict(torch.load(os.path.join('CNN_model', modelPath)))
-        
-        device = torch.device("cuda")
-        cnn = cnn.to(device)
-        criterion = criterion.to(device)
-
-        predict(cnn, criterion, train_loader, test_loader)
+    ......
 ```
