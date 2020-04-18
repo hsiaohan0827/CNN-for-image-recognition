@@ -70,7 +70,7 @@ python3 cnn.py
 ```
 
 ### tensorboardX
-可以使用tensorboard觀察loss及error rate變化
+可以使用tensorboard觀察loss及accuracy變化
 ```
 tensorboard --logdir CNN_log
 ```
